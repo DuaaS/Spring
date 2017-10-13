@@ -1,0 +1,209 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        
+	<context:component-scan base-package="com.giced" />
+
+	<bean class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+	  <property name="order" value="1"></property>
+	  <property name="basename" value="views"></property>
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="2"></property>
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/giced_test" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+	</bean> -->
+
+	<bean id="hibernate4AnnotatedSessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.giced.model.Appointment_Type</value>
+				<value>com.giced.model.Assignment</value>
+				<value>com.giced.model.Attendance</value>
+				<value>com.giced.model.AttendanceReport</value>
+				<value>com.giced.model.Caste</value>
+				<value>com.giced.model.Category</value>
+				<value>com.giced.model.Countries</value>
+				<value>com.giced.model.Course</value>
+				<value>com.giced.model.Designation</value>
+				<value>com.giced.model.Duration</value>
+				<value>com.giced.model.Faculty</value>
+				<value>com.giced.model.Role</value>
+				<value>com.giced.model.SubCaste</value>
+				<value>com.giced.model.Subject</value>
+				<value>com.giced.model.Title</value>
+				<value>com.giced.model.Users</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.enable_lazy_load_no_trans">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Appointment Type -->
+	<bean id="appointmentDao" class="com.giced.dao.AppointmentDaoImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+
+	<bean id="appointmentService" class="com.giced.service.AppointmentServiceImpl">
+		<property name="appointmentDao" ref="appointmentDao" />
+	</bean>
+	
+	<!-- Caste -->
+	<bean id="casteDao" class="com.giced.dao.CasteDaoImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+
+	<bean id="casteService" class="com.giced.service.CasteServiceImpl">
+		<property name="casteDao" ref="casteDao" />
+	</bean>
+	
+	<!-- Category -->
+	<bean id="catDao" class="com.giced.dao.CategoryDaoImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+
+	<bean id="catService" class="com.giced.service.CategoryServiceImpl">
+		<property name="catDao" ref="catDao" />
+	</bean>
+	
+	<!-- Sub Caste -->
+	<bean id="subcasteDao" class="com.giced.dao.SubCasteDaoImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+
+	<bean id="subcasteService" class="com.giced.service.SubCasteServiceImpl">
+		<property name="subcasteDao" ref="subcasteDao" />
+	</bean>
+	
+	<!-- Faculty -->
+	<bean id="facultyDao" class="com.giced.dao.FacultyDaoImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+
+	<bean id="facultyService" class="com.giced.service.FacultyServiceImpl">
+		<property name="facultyDao" ref="facultyDao" />
+	</bean>
+	
+	<!-- Designation -->
+	<bean id="designationDao" class="com.giced.dao.DesignationDaoImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+
+	<bean id="designationService" class="com.giced.service.DesignationServiceImpl">
+		<property name="designationDao" ref="designationDao" />
+	</bean>
+	
+	<!-- Users -->
+	<bean id="userDao" class="com.giced.dao.UsersDaoImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+
+	<bean id="userService" class="com.giced.service.UsersServiceImpl">
+		<property name="userDao" ref="userDao" />
+	</bean>
+	
+	<!-- Role -->
+	<bean id="roleDao" class="com.giced.dao.RoleDaoImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+
+	<bean id="roleService" class="com.giced.service.RoleServiceImpl">
+		<property name="roleDao" ref="roleDao" />
+	</bean> 
+	
+	<!-- Duration -->
+	<bean id="durationDao" class="com.giced.dao.DurationDaoImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+
+	<bean id="durationService" class="com.giced.service.DurationServiceImpl">
+		<property name="durationDao" ref="durationDao" />
+	</bean> 
+	
+	<!-- Title -->
+	<bean id="titleDao" class="com.giced.dao.TitleDaoImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+
+	<bean id="titleService" class="com.giced.service.TitleServiceImpl">
+		<property name="titleDao" ref="titleDao" />
+	</bean> 
+	
+	<!-- Subjects -->
+	<bean id="subjectDao" class="com.giced.dao.SubjectDaoImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+
+	<bean id="subjectService" class="com.giced.service.SubjectServiceImpl">
+		<property name="subjectDao" ref="subjectDao" />
+	</bean> 
+	
+	<!-- Courses -->
+	<bean id="courseDao" class="com.giced.dao.CourseDaoImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+
+	<bean id="courseService" class="com.giced.service.CourseServiceImpl">
+		<property name="courseDao" ref="courseDao" />
+	</bean> 
+	
+	<!-- Assignment -->
+	<bean id="assignmentDao" class="com.giced.dao.AssignmentDaoImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+
+	<bean id="assignmentService" class="com.giced.service.AssignmentServiceImpl">
+		<property name="assignmentDao" ref="assignmentDao" />
+	</bean> 
+	
+	<!-- Attendance -->
+	<bean id="attendanceDao" class="com.giced.dao.AttendanceDaoImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+
+	<bean id="attendanceService" class="com.giced.service.AttendanceServiceImpl">
+		<property name="attendanceDao" ref="attendanceDao" />
+	</bean> 
+	
+	
+
+	<context:component-scan base-package="com.giced" />
+
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+
+	<mvc:default-servlet-handler />
+	<mvc:annotation-driven />
+</beans>

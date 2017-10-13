@@ -1,0 +1,63 @@
+ <beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-4.1.xsd">
+
+    
+	<http auto-config="true">
+		
+		<intercept-url pattern="/super-admin" access="hasRole('SUPER_ADMIN')" />
+        <intercept-url pattern="/admin" access="hasRole('ADMIN')" />
+        <intercept-url pattern="/faculty" access="hasRole('FACULTY')" />
+        
+        <intercept-url pattern="/appointments" access="authenticated" />
+        <intercept-url pattern="/assignments" access="authenticated" />
+        <intercept-url pattern="/attendances" access="authenticated" />
+        <intercept-url pattern="/castes" access="authenticated" />
+        <intercept-url pattern="/categores" access="authenticated" />
+        <intercept-url pattern="/courses" access="authenticated" />
+        <intercept-url pattern="/designations" access="authenticated" />
+        <intercept-url pattern="/durations" access="authenticated" />
+        <intercept-url pattern="/faculties" access="authenticated" />
+        <intercept-url pattern="/roles" access="authenticated" />
+        <intercept-url pattern="/subcastes" access="authenticated" />
+        <intercept-url pattern="/subjects" access="authenticated" />
+        <intercept-url pattern="/titles" access="authenticated" />
+        <intercept-url pattern="/users" access="authenticated" />
+        
+        
+        <!-- <intercept-url pattern="/" access="permitAll" />
+        <intercept-url pattern="/**" access="authenticated"/> -->
+        <!-- <intercept-url pattern="/login" access="permitAll()"/> -->
+		
+		 <form-login login-page='/login' 
+		 	authentication-success-handler-ref="customSuccessHandler"
+            authentication-failure-url="/login_error" 
+            username-parameter="username"
+            password-parameter="password" /> 
+            
+           
+        <logout logout-url="/logout"
+            delete-cookies="JSESSIONID" invalidate-session="true" />  
+		<csrf/>
+		
+
+	</http>
+	
+	
+    <beans:bean id="customSuccessHandler" class="com.giced.config.CustomSuccessHandler" />
+	
+	<authentication-manager>
+        <authentication-provider>
+            <jdbc-user-service data-source-ref="dataSource" 
+                users-by-username-query="select user_name as username, user_password as password, '1' as enabled from users where user_name=?"
+                authorities-by-username-query="Select user_name as username, concat('ROLE_',role_id) as user_role from users where user_name=?" />
+        </authentication-provider>
+ 
+    </authentication-manager> 
+
+
+</beans:beans> 
