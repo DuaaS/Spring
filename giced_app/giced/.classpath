@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/dell/.m2/repository/org/springframework/spring-webmvc/4.3.8.RELEASE/spring-webmvc-4.3.8.RELEASE.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-webmvc/2.5.6/spring-webmvc-2.5.6.jar" sourcepath="M2_REPO/org/springframework/spring-webmvc/2.5.6/spring-webmvc-2.5.6-sources.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/dell/.m2/repository/org/springframework/spring-web/4.0.3.RELEASE/spring-web-4.0.3.RELEASE.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.springframework"/>
+			<attribute name="maven.artifactId" value="spring-web"/>
+			<attribute name="maven.version" value="4.0.3.RELEASE"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/00-DUAA/MY PROJECT WORKS/jasperreports-6.4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/dell/Downloads/itext-2.1.7.jar"/>
+	<classpathentry kind="lib" path="C:/tools/i-text/itext7-font-asian-7.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/tools/i-text/itext7-forms-7.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/tools/i-text/itext7-hyph-7.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/tools/i-text/itext7-io-7.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/tools/i-text/itext7-pdfa-7.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/tools/i-text/itext7-pdftest-7.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/tools/i-text/itext7-sign-7.0.2.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
