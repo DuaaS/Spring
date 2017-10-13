@@ -1,0 +1,45 @@
+.checkbox-inline label, .radio-inline label{
+  font-weight: normal;
+}
+
+/* added by Duaa */
+
+label.valid {
+  width: 24px;
+  height: 24px;
+  background: url(assets/img/valid.png) center center no-repeat;
+  display: inline-block;
+  text-indent: -9999px;
+}
+label.error {
+    font-weight: bold;
+    color: rgba(255, 21, 21, 0.91);
+    padding: 0px 14px;
+    margin-top: -1px;
+    position: absolute;
+}
+
+
+ ul.paging {
+            margin: auto;
+            display: inline-block;
+            padding: 0;
+        }
+
+        ul.paging li {
+            display: inline;
+            border: 1px solid #ddd;
+            border-radius: 10%;
+            color: #669;
+            float: left;
+            font-size: 18px;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        .special{
+             width: 500px;
+             margin: auto;
+             margin-top: 50px;
+         }
+        
